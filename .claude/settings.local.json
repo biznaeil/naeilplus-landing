@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"setup-github.cmd\"\\); Write-Output \\(\"Size: \" + $bytes.Length + \" bytes\"\\); Write-Output \\(\"First 3 bytes \\(BOM check\\): \" + \\($bytes[0..2] -join ','\\)\\); $hasBOM = \\($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF\\); Write-Output \\(\"UTF-8 BOM: \" + $hasBOM\\); $crlfCount = 0; $lfOnlyCount = 0; for \\($i=0; $i -lt $bytes.Length; $i++\\) { if \\($bytes[$i] -eq 0x0A\\) { if \\($i -gt 0 -and $bytes[$i-1] -eq 0x0D\\) { $crlfCount++ } else { $lfOnlyCount++ } } }; Write-Output \\(\"CRLF lines: \" + $crlfCount\\); Write-Output \\(\"LF-only lines: \" + $lfOnlyCount\\))",
+      "PowerShell($content = [System.IO.File]::ReadAllText\\(\"setup-github.cmd\", [System.Text.Encoding]::UTF8\\); $content = $content -replace \"`r`n\", \"`n\"; $content = $content -replace \"`n\", \"`r`n\"; $utf8NoBom = New-Object System.Text.UTF8Encoding\\($false\\); [System.IO.File]::WriteAllText\\(\\(Resolve-Path \"setup-github.cmd\"\\), $content, $utf8NoBom\\); Write-Output \"Conversion done\")",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"setup-github.cmd\"\\); $crlfCount = 0; $lfOnlyCount = 0; for \\($i=0; $i -lt $bytes.Length; $i++\\) { if \\($bytes[$i] -eq 0x0A\\) { if \\($i -gt 0 -and $bytes[$i-1] -eq 0x0D\\) { $crlfCount++ } else { $lfOnlyCount++ } } }; Write-Output \\(\"CRLF lines: \" + $crlfCount + \" | LF-only: \" + $lfOnlyCount\\))"
+    ]
+  }
+}
