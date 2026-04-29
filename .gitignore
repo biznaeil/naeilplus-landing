@@ -1,0 +1,49 @@
+# =========================================================
+# 내일플러스 랜딩페이지 .gitignore
+# Why: 정적 HTML/CSS/JS 프로젝트 + Windows 환경 기준.
+#      OS 자동 생성 파일, 에디터 캐시, 비밀값 파일을 추적에서 제외.
+# =========================================================
+
+# Why: macOS / Windows / Linux가 폴더 진입 시 자동 생성하는 메타데이터.
+#      코드와 무관하므로 저장소를 더럽히지 않도록 차단.
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Why: 에디터별 워크스페이스 설정/캐시. 개인 환경 파일이라 공유 X.
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Why: 로그·임시 파일은 디버깅 산출물이며 저장소에 누적되면 안 됨.
+*.log
+npm-debug.log*
+.tmp/
+.cache/
+
+# Why: 향후 Node 도구 도입 시(formspree 백엔드, 빌드 등) node_modules
+#      는 매우 크고 복원 가능하므로 절대 커밋하지 않음.
+node_modules/
+package-lock.json.bak
+
+# Why: Formspree·Facebook Pixel ID 같은 운영 비밀이 들어갈 가능성.
+#      .env 류는 절대 GitHub에 올라가면 안 됨 (자동화에서도 사고 방지).
+.env
+.env.*
+!.env.example
+secrets.json
+
+# Why: Mac Finder 미리보기와 macOS Time Machine 메타데이터 (협업 안전망).
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Why: 빌드 산출물 폴더 후보 (현재는 사용 안 하지만 미래 대비).
+dist/
+build/
+out/
