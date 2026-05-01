@@ -17,7 +17,11 @@
 
 <title>정부지원금, 우리 회사도 받을 수 있을까? — 30분 무료 진단 | 내일플러스</title>
 <meta name="description" content="매년 1,200억 원의 정부지원금이 신청자 없이 소멸됩니다. 30분 무료 진단으로 우리 회사가 받을 수 있는 정책자금·팁스·R&D·투자 매칭을 한 번에 확인하세요." />
-<meta name="robots" content="noindex,nofollow" />
+<!-- 수정 (2026-05-01): 카카오톡 등 일부 메신저 스크래퍼가 nofollow 만나면 og:image fetch를 거부해
+     썸네일이 안 뜨는 이슈 해결.
+     - noindex 유지: 광고용 LP라 구글 검색 결과에 노출 차단 의도 보존
+     - nofollow → follow + max-image-preview:large: 소셜 미리보기 봇이 이미지 가져갈 수 있게 허용 -->
+<meta name="robots" content="noindex,follow,max-image-preview:large" />
 <!-- 수정 (2026-05-01): 파일명 consult.html → landing.html 변경에 따른 canonical URL 동기화 -->
 <link rel="canonical" href="https://biznaeil.com/landing.html" />
 
@@ -25,6 +29,8 @@
 <meta property="og:site_name" content="내일플러스" />
 <meta property="og:title" content="정부지원금, 우리 회사도 받을 수 있을까? — 30분 무료 진단" />
 <meta property="og:description" content="정책자금·팁스·투자유치까지, 우리 회사가 받을 수 있는 자금 라인업을 한 번에 진단합니다." />
+<!-- 추가 (2026-05-01): og:url 누락이 카카오톡 미리보기 실패 원인 중 하나일 가능성. 도메인 미보유 상태라 Firebase URL 사용 (도메인 연결 후 https://biznaeil.com/landing.html 로 교체). -->
+<meta property="og:url" content="https://naeilplus-landing.web.app/" />
 <meta property="og:locale" content="ko_KR" />
 <!-- 수정 (2026-05-01): 카카오톡/페이스북 공유 시 썸네일이 정상적으로 뜨도록 Firebase Hosting 절대 URL로 교체 + 홈페이지와 동일 이미지 사용. 도메인(biznaeil.com) 연결 후에는 https://biznaeil.com/og-image.png 로 교체 권장. -->
 <meta property="og:image" content="https://naeilplus-landing.web.app/og-image.png" />
