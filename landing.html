@@ -40,7 +40,9 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-<link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%230A2540"/><path d="M18 44V20h6l16 16V20h6v24h-6L24 28v16z" fill="%23C5A572"/></svg>' />
+<!-- 수정 (2026-05-01): 임시 인라인 SVG 파비콘 → 정식 PNG 로고(icon.png) 교체. iOS 홈화면 추가용 apple-touch-icon 도 동일 자원으로 지정. -->
+<link rel="icon" href="icon.png" type="image/png" sizes="256x256" />
+<link rel="apple-touch-icon" href="icon.png" />
 <link rel="stylesheet" href="styles.css" />
 
 <!-- Facebook Pixel — 광고 운영 전 PIXEL_ID 교체 -->
@@ -75,8 +77,9 @@ fbq('track', 'PageView');
 <header class="dp-header">
   <div class="container dp-header-inner">
     <a href="index.html" class="brand" aria-label="내일플러스 홈">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" width="28" height="28"><rect width="64" height="64" rx="14" fill="#0A2540"/><path d="M18 44V20h6l16 16V20h6v24h-6L24 28v16z" fill="#C5A572"/></svg>
+      <!-- 수정 (2026-05-01): 임시 인라인 SVG → 정식 PNG 로고로 교체 (홈페이지/워크스페이스와 동일 자산) -->
+      <span class="brand-mark" style="width:28px;height:28px" aria-hidden="true">
+        <img src="icon.png" alt="" />
       </span>
       <span class="brand-text">
         <strong>내일플러스</strong>
