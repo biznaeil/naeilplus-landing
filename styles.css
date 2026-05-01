@@ -551,7 +551,8 @@ section{ scroll-margin-top: 88px; }
 }
 
 /* =========================================================
-   DETAIL-PAGE (상세페이지) STYLES — consult.html
+   LANDING-PAGE (광고용 LP) STYLES — landing.html
+   (수정 2026-05-01: 파일명 consult.html → landing.html 변경에 따른 주석 동기화)
    Korean e-commerce style long-scroll lead-gen page.
    All classes namespaced with .dp / .dp-*.
    ========================================================= */

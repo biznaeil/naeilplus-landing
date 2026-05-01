@@ -1,3 +1,10 @@
+<!--
+  ============================================================
+  이 파일은 [랜딩페이지 폼 제출 완료 페이지] 입니다.
+  - 저장소: biznaeil/naeilplus-landing
+  - 용도: landing.html 폼 제출 후 도착하는 thank-you 페이지 (Facebook CompleteRegistration 전환 이벤트 발사)
+  ============================================================
+-->
 <!doctype html>
 <html lang="ko">
 <head>
@@ -84,9 +91,14 @@ fbq('track', 'CompleteRegistration');
       </p>
     </div>
 
+    <!--
+      수정 (2026-05-01): 저장소 분리로 인해 같은 레포에 index.html(회사 홈페이지)이 더 이상 존재하지 않음.
+      도메인 확정되면 회사 홈페이지 절대 URL(예: https://biznaeil.com/, https://biznaeil.com/#services)로 교체할 것.
+      현재는 임시로 landing.html(LP 자기 자신)로 돌려둠.
+    -->
     <div class="thanks-cta">
-      <a href="index.html" class="btn btn-gold btn-lg">홈으로 가기</a>
-      <a href="index.html#services" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,.3);">서비스 더 보기</a>
+      <a href="landing.html" class="btn btn-gold btn-lg">처음으로</a>
+      <a href="mailto:ceo@biznaeil.com" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,.3);">이메일 문의</a>
     </div>
   </div>
 </main>

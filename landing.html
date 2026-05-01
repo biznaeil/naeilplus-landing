@@ -1,3 +1,12 @@
+<!--
+  ============================================================
+  이 파일은 [광고용 랜딩페이지(LP)] 입니다.
+  - 저장소: biznaeil/naeilplus-landing
+  - 용도: 페이스북 광고 트래픽 전용 단일 목적 페이지 (정책자금 무료 진단 신청)
+  - 회사 홈페이지(메인 홈)는 별도 저장소 biznaeil/naeilplus-homepage 의 index.html
+  - 분리 이력: 2026-05-01 한 저장소에 섞여있던 홈페이지/LP를 분리 (이 파일은 기존 consult.html에서 이름 변경)
+  ============================================================
+-->
 <!doctype html>
 <html lang="ko">
 <head>
@@ -9,7 +18,8 @@
 <title>정부지원금, 우리 회사도 받을 수 있을까? — 30분 무료 진단 | 내일플러스</title>
 <meta name="description" content="매년 1,200억 원의 정부지원금이 신청자 없이 소멸됩니다. 30분 무료 진단으로 우리 회사가 받을 수 있는 정책자금·팁스·R&D·투자 매칭을 한 번에 확인하세요." />
 <meta name="robots" content="noindex,nofollow" />
-<link rel="canonical" href="https://biznaeil.com/consult.html" />
+<!-- 수정 (2026-05-01): 파일명 consult.html → landing.html 변경에 따른 canonical URL 동기화 -->
+<link rel="canonical" href="https://biznaeil.com/landing.html" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="정부지원금, 우리 회사도 받을 수 있을까? — 30분 무료 진단" />
@@ -488,7 +498,8 @@ fbq('track', 'PageView');
         <input type="hidden" name="utm_term" />
         <input type="hidden" name="utm_content" />
         <input type="hidden" name="referrer" />
-        <input type="hidden" name="landing_page" value="consult.html" />
+        <!-- 수정 (2026-05-01): 파일명 변경에 따른 hidden field 값 동기화 -->
+            <input type="hidden" name="landing_page" value="landing.html" />
         <input type="hidden" name="_subject" value="[내일플러스] 무료 진단 신청 (LP)" />
         <input type="hidden" name="_next" value="thanks.html" />
 
@@ -560,6 +571,7 @@ fbq('track', 'PageView');
 </footer>
 
 <script src="script.js" defer></script>
-<script src="lp.js" defer></script>
+<!-- 수정 (2026-05-01): 파일명 lp.js → landing.js 변경에 따른 참조 동기화 -->
+<script src="landing.js" defer></script>
 </body>
 </html>
