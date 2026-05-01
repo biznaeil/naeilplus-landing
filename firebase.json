@@ -1,0 +1,38 @@
+{
+  "//": "Firebase Hosting 설정 — 정적 사이트 (광고용 LP). 빌드 없이 루트 디렉토리 그대로 배포.",
+  "hosting": {
+    "public": ".",
+    "//ignore": "보안: .git/** 등 명시적으로 제외해야 함 (firebase의 **/.* 패턴이 디렉토리 내용물까지 막아주지 못함)",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".firebase/**",
+      ".git/**",
+      ".gitignore",
+      "firebase-debug.log",
+      "**/.*",
+      "**/node_modules/**",
+      "CLAUDE.md",
+      "README.md"
+    ],
+    "//rewrites": "추가 (2026-05-01): 광고 URL을 https://naeilplus-landing.web.app/ 처럼 깔끔하게 쓰기 위해 루트 → landing.html 매핑. 페이지가 noindex 처리돼 있어 SEO 중복 콘텐츠 이슈 없음.",
+    "rewrites": [
+      { "source": "/", "destination": "/landing.html" }
+    ],
+    "//headers": "정적 자원은 1년 캐시(immutable), HTML은 1시간 캐시(변경 빠르게 반영). naeil-workspace와 동일 정책.",
+    "headers": [
+      {
+        "source": "**/*.@(js|css|svg|woff2|png|jpg|jpeg|ico)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" }
+        ]
+      }
+    ]
+  }
+}

@@ -47,3 +47,9 @@ secrets.json
 dist/
 build/
 out/
+
+# Why (추가 2026-05-01): Firebase Hosting 배포 시 생성되는 로컬 캐시·디버그.
+#      .firebase/ 는 hashed 파일 캐시, firebase-debug.log 는 CLI 에러 로그. 둘 다 저장소 외 항목.
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
