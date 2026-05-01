@@ -1172,3 +1172,15 @@ section{ scroll-margin-top: 88px; }
   *,*::before,*::after{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .js-reveal .reveal{ opacity: 1; transform: none; }
 }
+
+/* ---------- Honeypot (봇 차단) ----------
+   추가 (2026-05-01, 상담접수 통합): 자동 폼 작성 봇은 보이지 않는 input 까지 채우는 경향이 있음.
+   사람에게는 안 보이게(접근성 위해 display:none 대신 위치 + 크기 0) 두고, hp 가 비어있을 때만 Firestore 가 수락. */
+.dp-hp{
+  position: absolute !important;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

@@ -507,21 +507,26 @@ fbq('track', 'PageView');
         <p class="dp-final-sub">1주 차이로 1년을 기다려야 하는 경우가 많습니다.<br/>지금 30초만 투자하세요.</p>
       </div>
 
+      <!-- 수정 (2026-05-01, 상담접수 통합): Formspree 제거 → 워크스페이스(naeil-workspace) Firestore consultations 컬렉션에 직접 저장.
+           제출은 landing.js 의 fetch/Firestore 핸들러가 처리하므로 action/method 불필요.
+           Formspree 전용 hidden(_subject/_next)도 제거. -->
       <form class="dp-form"
             id="lead-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
-            data-lead-form>
+            data-lead-form
+            novalidate>
         <input type="hidden" name="utm_source" />
         <input type="hidden" name="utm_medium" />
         <input type="hidden" name="utm_campaign" />
         <input type="hidden" name="utm_term" />
         <input type="hidden" name="utm_content" />
         <input type="hidden" name="referrer" />
-        <!-- 수정 (2026-05-01): 파일명 변경에 따른 hidden field 값 동기화 -->
-            <input type="hidden" name="landing_page" value="landing.html" />
-        <input type="hidden" name="_subject" value="[내일플러스] 무료 진단 신청 (LP)" />
-        <input type="hidden" name="_next" value="thanks.html" />
+        <input type="hidden" name="landing_page" value="landing.html" />
+        <!-- 추가 (2026-05-01): 봇 차단용 허니팟 — CSS 로 보이지 않게 처리, 봇이 자동으로 채우면 제출 차단.
+             사람은 빈 값으로 둔다 → firestore.rules 가 hp.size() == 0 만 통과시킴. -->
+        <label class="dp-hp" aria-hidden="true">
+          웹사이트 (작성하지 마세요)
+          <input type="text" name="hp" tabindex="-1" autocomplete="off" />
+        </label>
 
         <div class="field">
           <label for="lf-name">이름 <em>*</em></label>
@@ -591,7 +596,8 @@ fbq('track', 'PageView');
 </footer>
 
 <script src="script.js" defer></script>
-<!-- 수정 (2026-05-01): 파일명 lp.js → landing.js 변경에 따른 참조 동기화 -->
-<script src="landing.js" defer></script>
+<!-- 수정 (2026-05-01, 상담접수 통합): landing.js 가 Firebase ESM SDK 사용 → type="module" 필수.
+     module 스크립트는 자동 defer 라 defer 속성 불필요. -->
+<script src="landing.js" type="module"></script>
 </body>
 </html>
