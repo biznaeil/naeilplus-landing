@@ -23,6 +23,13 @@
 - "커밋해줘" / "올려줘" 라고 하면 Claude가 `git add` → `commit` → `push` 처리
 - push 대상: `origin main` (biznaeil 계정의 원본 레포에 직접 push)
 
+## 배포 흐름
+- **"배포해줘"는 항상 GitHub 푸시 + Firebase Hosting 배포 둘 다를 의미한다.** 어느 한쪽만 하지 말 것.
+- 실행 순서: (1) 변경사항 `git commit` → (2) `git push origin main` → (3) `npx firebase-tools deploy --only hosting --project naeilplus-landing`
+- Firebase 프로젝트 ID: `naeilplus-landing`
+- 라이브 URL: https://naeilplus-landing.web.app
+- HTML은 1시간 캐시(`Cache-Control: max-age=3600`) — 배포 직후 미반영처럼 보일 수 있으니 강력 새로고침 안내 필요
+
 ## 코드 작성 규칙 (중요)
 **모든 코드 작성·수정 시 한국어 주석으로 "이유와 상황"을 반드시 기록한다.**
 - 새 코드: 작성 목적, 어떤 요구사항으로 만들어졌는지 주석으로 남기기
