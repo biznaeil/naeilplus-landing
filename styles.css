@@ -683,6 +683,49 @@ section{ scroll-margin-top: 88px; }
 }
 
 /* =========================================================
+   01-B. STATS STRIP
+   추가 (2026-05-03, LP 리뉴얼): 히어로 직후 신뢰 수치 4개 카드 (테레오 벤치마킹).
+   Pain 진입 전 "수치 기반 신뢰감" 박는 영역. 모바일에선 2x2 그리드.
+   ========================================================= */
+.dp-stats{
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+}
+.dp-stats-inner{ }
+.dp-stats-grid{
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  text-align: center;
+}
+.dp-stats-grid li{
+  padding: 8px 12px;
+  position: relative;
+}
+.dp-stats-grid li + li::before{
+  content: ""; position: absolute; left: -8px; top: 20%;
+  width: 1px; height: 60%; background: var(--line);
+}
+.dp-stats-grid strong{
+  display: block;
+  font-size: clamp(32px, 4.2vw, 44px);
+  font-weight: 900; color: var(--navy);
+  letter-spacing: -.03em; line-height: 1;
+  margin-bottom: 8px;
+}
+.dp-stats-grid strong small{
+  font-size: .55em; font-weight: 800; color: var(--gold); margin-left: 2px;
+}
+.dp-stats-grid span{
+  display: block;
+  font-size: 13.5px; color: var(--muted); font-weight: 600; line-height: 1.5;
+}
+@media (max-width: 720px){
+  .dp-stats-grid{ grid-template-columns: 1fr 1fr; gap: 24px 12px; }
+  .dp-stats-grid li + li::before{ display: none; }
+}
+
+/* =========================================================
    02. PAIN
    ========================================================= */
 .dp-pain{ background: #fff; text-align: center; }
@@ -788,7 +831,52 @@ section{ scroll-margin-top: 88px; }
   margin-top: 18px; color: var(--muted); font-size: 14px;
 }
 
-/* Area grid (12 areas) */
+/* 추가 (2026-05-03, LP 리뉴얼): 카테고리 헤더 (5대 카테고리 묶음용).
+   "01 자금 & 투자 빌드 — 김병준 · 한세근 · 김지우" 형태로 그룹 구분. */
+.dp-cat-title{
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px;
+  font-size: 19px; font-weight: 800; color: var(--navy);
+  letter-spacing: -.01em;
+  margin: 32px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+}
+.dp-cat-title:first-of-type{ margin-top: 8px; }
+.dp-cat-title .dp-cat-num{
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--navy); color: var(--gold);
+  font-size: 14px; font-weight: 900;
+}
+.dp-cat-title .dp-cat-by{
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  margin-left: auto;
+}
+@media (max-width: 720px){
+  .dp-cat-title{ font-size: 17px; }
+  .dp-cat-title .dp-cat-by{ flex-basis: 100%; margin-left: 44px; font-size: 12px; }
+}
+
+/* 추가 (2026-05-03, LP 리뉴얼): 카테고리 내 강조 카드 (알리바바 파트너십 같은 핵심 셀러 카드). */
+.dp-area-grid article.dp-area-hl{
+  background: linear-gradient(135deg, #FFF6E0 0%, #FBF8F2 100%);
+  border-color: var(--gold);
+}
+.dp-area-grid article.dp-area-hl h3{ color: var(--navy); }
+.dp-area-grid article.dp-area-hl::after{
+  content: "PARTNER"; position: absolute; top: 10px; right: 10px;
+  font-size: 10px; font-weight: 800; letter-spacing: .08em;
+  color: var(--gold);
+}
+
+/* 추가 (2026-05-03, LP 리뉴얼): 히어로 서브카피 내 시그니처 메소드명 강조 ("내일플러스 라이프사이클 컨설팅"). */
+.dp-hero-sub .hl-y-text{
+  font-style: normal; font-weight: 800; color: var(--gold);
+  background: linear-gradient(180deg, transparent 60%, rgba(197,165,114,.25) 60%);
+  padding: 0 4px;
+}
+
+/* Area grid (22 areas, 5 categories — 수정 2026-05-03) */
 .dp-area-grid{
   display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px;
   margin-bottom: 18px;
