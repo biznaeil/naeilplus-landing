@@ -18,21 +18,26 @@
 <!-- 수정 (2026-05-03, LP 리뉴얼): 시그니처 메소드 "내일플러스 라이프사이클 컨설팅" 도입 + 22개 영역·15명 시니어로 데이터 갱신.
      이유: 경쟁사 3곳(포켓컴퍼니/유인어스/테레오) 분석 결과, 자체 메소드 네이밍과 라이프사이클 커버리지를 동시에 어필해야 차별화 가능. -->
 <title>정부지원의 모든것, 올인원 컨설팅으로 — 30분 무료 진단 | 내일플러스</title>
-<meta name="description" content="창업부터 가업승계까지, 정책자금·R&D·투자·세무·법무 22개 전문 영역을 분야별 시니어 15명이 직접 진단합니다. 내일플러스 라이프사이클 컨설팅 — 30분 무료." />
+<!-- 수정 (2026-05-05, 진단): "22개" → "24개" 통일. 실제 카드 합산이 5+5+8+4+2=24개라
+     기존 "22" 표기는 페이지 내 검증 실패. 모든 카피·메타·구조화 데이터를 24로 일치시킴. -->
+<meta name="description" content="창업부터 가업승계까지, 정책자금·R&D·투자·세무·법무 24개 전문 영역을 분야별 전문가 15명이 직접 진단합니다. 내일플러스 라이프사이클 컨설팅 — 30분 무료." />
 <!-- 수정 (2026-05-01): 카카오톡 등 일부 메신저 스크래퍼가 nofollow 만나면 og:image fetch를 거부해
      썸네일이 안 뜨는 이슈 해결.
      - noindex 유지: 광고용 LP라 구글 검색 결과에 노출 차단 의도 보존
      - nofollow → follow + max-image-preview:large: 소셜 미리보기 봇이 이미지 가져갈 수 있게 허용 -->
 <meta name="robots" content="noindex,follow,max-image-preview:large" />
-<!-- 수정 (2026-05-01): 파일명 consult.html → landing.html 변경에 따른 canonical URL 동기화 -->
-<link rel="canonical" href="https://biznaeil.com/landing.html" />
+<!-- 수정 (2026-05-05, 진단): canonical 과 og:url 도메인 불일치 해결.
+     biznaeil.com 도메인 미연결 상태에서 canonical 만 biznaeil.com 가리키면 메신저·SEO 봇이
+     실재하지 않는 URL 로 향함. 도메인 연결 시 둘 다 https://biznaeil.com/landing.html 로 동시 교체. -->
+<link rel="canonical" href="https://naeilplus-landing.web.app/landing.html" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="내일플러스" />
 <meta property="og:title" content="정부지원의 모든것, 올인원 컨설팅으로 — 30분 무료 진단" />
-<meta property="og:description" content="창업부터 가업승계까지, 22개 전문 영역·시니어 15명이 함께하는 내일플러스 라이프사이클 컨설팅." />
-<!-- 추가 (2026-05-01): og:url 누락이 카카오톡 미리보기 실패 원인 중 하나일 가능성. 도메인 미보유 상태라 Firebase URL 사용 (도메인 연결 후 https://biznaeil.com/landing.html 로 교체). -->
-<meta property="og:url" content="https://naeilplus-landing.web.app/" />
+<meta property="og:description" content="창업부터 가업승계까지, 24개 전문 영역·전문가 15명이 함께하는 내일플러스 라이프사이클 컨설팅." />
+<!-- 수정 (2026-05-05, 진단): canonical 과 동일한 절대 URL 로 통일 (기존 루트 / 만 가리켜 불일치).
+     도메인 연결 후 https://biznaeil.com/landing.html 로 동시 교체. -->
+<meta property="og:url" content="https://naeilplus-landing.web.app/landing.html" />
 <meta property="og:locale" content="ko_KR" />
 <!-- 수정 (2026-05-01): 카카오톡/페이스북 공유 시 썸네일이 정상적으로 뜨도록 Firebase Hosting 절대 URL로 교체 + 홈페이지와 동일 이미지 사용. 도메인(biznaeil.com) 연결 후에는 https://biznaeil.com/og-image.png 로 교체 권장. -->
 <meta property="og:image" content="https://naeilplus-landing.web.app/og-image.png" />
@@ -43,7 +48,7 @@
 <!-- Twitter (추가 2026-05-01: 카카오톡/X(트위터) 공유 시 large image 카드 렌더링용) -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="정부지원의 모든것, 올인원 컨설팅으로 — 30분 무료 진단" />
-<meta name="twitter:description" content="창업~가업승계 22개 영역·시니어 15명. 내일플러스 라이프사이클 컨설팅." />
+<meta name="twitter:description" content="창업~가업승계 24개 영역·전문가 15명. 내일플러스 라이프사이클 컨설팅." />
 <meta name="twitter:image" content="https://naeilplus-landing.web.app/og-image.png" />
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -53,19 +58,30 @@
 <link rel="apple-touch-icon" href="icon.png" />
 <link rel="stylesheet" href="styles.css" />
 
-<!-- Facebook Pixel — 광고 운영 전 PIXEL_ID 교체 -->
+<!-- Facebook Pixel —
+     수정 (2026-05-05, 진단): 기존 전체 주석 처리 → 가드 패턴으로 변경.
+     window.FB_PIXEL_ID 가 비어 있으면 픽셀 자체가 로드되지 않아 무효 트래픽/콘솔 에러 없음.
+     광고 운영 시작 전 FB_PIXEL_ID 에 메타 이벤트 매니저의 15자리 데이터셋 ID 입력만 하면 자동 활성화됨.
+     landing.js 의 Lead 이벤트 발사도 typeof window.fbq === "function" 체크로 안전. -->
 <script>
-/*
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'PIXEL_ID');
-fbq('track', 'PageView');
-*/
+  // TODO: 광고 운영 시작 전 메타 이벤트 매니저의 15자리 픽셀 ID 입력 필수.
+  // 빈 문자열 유지 시 픽셀 비활성 (Lead/PageView 이벤트 미발사).
+  window.FB_PIXEL_ID = "";
+
+  if (window.FB_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.FB_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+<noscript>
+  <!-- noscript 픽셀은 JS 비활성 환경 fallback. JS 가드와 별개로 ID 가 placeholder 면 비활성 처리.
+       광고 운영 시 위 FB_PIXEL_ID 와 동일 값으로 교체 필수. -->
+</noscript>
 
 <script type="application/ld+json">
 {
@@ -84,7 +100,10 @@ fbq('track', 'PageView');
 <!-- ============== Mini Header (sticky) ============== -->
 <header class="dp-header">
   <div class="container dp-header-inner">
-    <a href="index.html" class="brand" aria-label="내일플러스 홈">
+    <!-- 수정 (2026-05-05, 진단): index.html 은 별도 저장소(naeilplus-homepage)로 분리되어
+         본 LP 저장소엔 없음 → 404 발생. 도메인 미연결 상태이므로 페이지 자체로 스크롤 업 처리.
+         도메인 연결 후 https://biznaeil.com/ (또는 동일 도메인 / 루트) 로 교체. -->
+    <a href="#" class="brand" aria-label="내일플러스 홈" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
       <!-- 수정 (2026-05-01): 임시 인라인 SVG → 정식 PNG 로고로 교체 (홈페이지/워크스페이스와 동일 자산) -->
       <span class="brand-mark" style="width:28px;height:28px" aria-hidden="true">
         <img src="icon.png" alt="" />
@@ -111,7 +130,7 @@ fbq('track', 'PageView');
         <span class="hl">올인원 컨설팅</span>으로 해결하세요
       </h1>
       <p class="dp-hero-sub">
-        창업부터 <strong>가업승계</strong>까지 — <strong>22개 전문 영역</strong>·<strong>시니어 15명</strong>이<br/>
+        창업부터 <strong>가업승계</strong>까지 — <strong>24개 전문 영역</strong>·<strong>전문가 15명</strong>이<br/>
         함께 설계하는 <em class="hl-y-text">내일플러스 라이프사이클 컨설팅</em>.
       </p>
       <a href="#apply" class="btn btn-gold btn-xl">30분 무료 진단 신청하기 →</a>
@@ -131,12 +150,14 @@ fbq('track', 'PageView');
     <div class="container dp-stats-inner">
       <ul class="dp-stats-grid" role="list">
         <li>
-          <strong>22<small>+</small></strong>
+          <strong>24<small>+</small></strong>
           <span>전문 컨설팅 영역</span>
         </li>
         <li>
           <strong>15<small>+</small></strong>
-          <span>분야별 시니어 컨설턴트</span>
+          <!-- 수정 (2026-05-05, 진단): "시니어 컨설턴트" → "분야별 전문가" — 매니저급 인원(교육/고객지원)
+               포함되는데 "시니어"로 일괄 표기 시 카드 직함과 충돌. "전문가"로 통일해 메시지·카드 일치. -->
+          <span>분야별 전문가 라인업</span>
         </li>
         <li>
           <strong>1:1</strong>
@@ -168,12 +189,15 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- ============== 03. SHOCK / REALITY ============== -->
+  <!-- ============== 03. SHOCK / REALITY ==============
+       수정 (2026-05-05, 진단): 기존 "1,200억원+" 구체 수치 → 출처 검증 불가로 클레임 리스크.
+       페이스북 광고 심사·소비자 신뢰 모두 취약. "수천억 원" 으로 톤다운하고 출처 한 줄 추가.
+       정확한 출처(중기부 보도자료 등) 확보 시 구체 숫자로 다시 격상 권장. -->
   <section class="dp-section dp-shock">
     <div class="container narrow">
       <span class="dp-label">놀라지 마세요</span>
       <p class="dp-shock-num">
-        <span class="big">1,200<small>억 원+</small></span>
+        <span class="big">수천<small>억 원+</small></span>
       </p>
       <p class="dp-shock-desc">
         매년 신청자가 부족해<br/>
@@ -183,6 +207,7 @@ fbq('track', 'PageView');
         복잡해서 못 받는 게 아닙니다.<br/>
         <span class="hl-y">대부분 "있는 줄 몰라서"</span> 못 받는 겁니다.
       </p>
+      <p class="dp-shock-source"><small>※ 중소벤처기업부·기획재정부 등 정부 부처 미신청·잔여 예산 합산 추정치.</small></p>
     </div>
   </section>
 
@@ -196,7 +221,7 @@ fbq('track', 'PageView');
         만들었습니다.
       </h2>
       <p class="dp-solution-desc">
-        22개 전문 영역과 1,000개 이상의 공고를 라이프사이클 기준으로 통합 분석해,<br/>
+        24개 전문 영역과 1,000개 이상의 공고를 라이프사이클 기준으로 통합 분석해,<br/>
         <strong>딱 우리 회사 단계에 맞는 라인업만</strong> 골라드립니다.
       </p>
       <a href="#apply" class="btn btn-gold btn-xl">지금 무료로 진단받기 →</a>
@@ -212,7 +237,7 @@ fbq('track', 'PageView');
     <div class="container">
       <span class="dp-point-label">POINT <strong>01</strong></span>
       <h2 class="dp-h2">
-        22개 영역을 <span class="u">5대 라이프사이클 빌드</span>로<br/>
+        24개 영역을 <span class="u">5대 라이프사이클 빌드</span>로<br/>
         통합 진단해드립니다.
       </h2>
       <p class="dp-point-lede">
@@ -269,7 +294,7 @@ fbq('track', 'PageView');
         <article><h3>사내 교육 컨설팅</h3><p>실무자 대상 직무·도구·자동화 교육</p></article>
       </div>
 
-      <p class="dp-area-foot">+ 기업별 맞춤 All-in-One 기획 플랜까지 총 <strong>22개 영역</strong></p>
+      <p class="dp-area-foot">+ 기업별 맞춤 All-in-One 기획 플랜까지 총 <strong>24개 영역</strong></p>
     </div>
   </section>
 
@@ -283,11 +308,14 @@ fbq('track', 'PageView');
       <span class="dp-point-label">POINT <strong>02</strong></span>
       <h2 class="dp-h2">
         주니어가 아닌,<br/>
-        <span class="u">시니어 15명</span>이 직접 진단합니다.
+        <span class="u">각 분야 전문가 15명</span>이 직접 진단합니다.
       </h2>
+      <!-- 수정 (2026-05-05, 진단): "시니어 15명" → "각 분야 전문가 15명" — 카드 라인업에 디자이너·매니저
+           포함되어 "시니어"로 일관 표기 시 충돌. "각 분야 전문가"로 격상해 변호사·세무사·법무사·변리사·노무사·
+           기술가치평가사 등 자격 보유자와 디자이너·매니저까지 자연스럽게 포섭. -->
       <p class="dp-point-lede">
         영업사원이 받아 적는 진단이 아닙니다.<br/>
-        <strong>각 분야 대표 전문가 15명 + 알리바바코리아 파트너십</strong>이 1:1로 진행합니다.
+        <strong>각 분야 전문가 15명 + 알리바바코리아 파트너십</strong>이 1:1로 진행합니다.
       </p>
 
       <ul class="dp-expert-row" role="list">
@@ -412,7 +440,7 @@ fbq('track', 'PageView');
         <div class="dp-compare-row">
           <div class="row-h">상담 인력</div>
           <div><span class="x">영업 직원이 1차</span></div>
-          <div class="me"><span class="o">시니어 15명이 직접 1:1</span></div>
+          <div class="me"><span class="o">분야별 전문가 15명이 직접 1:1</span></div>
         </div>
         <div class="dp-compare-row">
           <div class="row-h">단계 커버리지</div>
@@ -422,7 +450,7 @@ fbq('track', 'PageView');
         <div class="dp-compare-row">
           <div class="row-h">진단 범위</div>
           <div><span class="x">한 영역만 (자금만 / R&amp;D만)</span></div>
-          <div class="me"><span class="o">22개 영역 라이프사이클 통합</span></div>
+          <div class="me"><span class="o">24개 영역 라이프사이클 통합</span></div>
         </div>
         <div class="dp-compare-row">
           <div class="row-h">사업계획서</div>
@@ -500,10 +528,28 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- ============== 13. CEO MESSAGE ============== -->
+  <!-- ============== 13. CEO MESSAGE ==============
+       수정 (2026-05-05, 진단): 사진 자리 + 핵심 이력 1줄 추가. 텍스트 일변도 → 인물 신뢰 자산 강화.
+       ⚠️ TODO 1: ceo-kim.jpg (정사각형 권장 400x400 이상) 파일을 본 폴더에 추가하면 자동 표시.
+                  현재는 placeholder(이니셜 "김") 표시. 파일 없으면 onerror 로 placeholder 유지.
+       ⚠️ TODO 2: 아래 이력 1줄을 실제 누적 실적 수치로 교체 권장.
+                  예: "정책자금 누적 OOO억 매칭 · R&D 합격 OO건 · 전·현직 컨설팅 15년"
+                  현재는 검증 가능한 일반 표현으로만 작성. -->
   <section class="dp-section dp-ceo">
     <div class="container narrow">
       <span class="dp-label">CEO LETTER</span>
+
+      <div class="dp-ceo-card">
+        <div class="dp-ceo-photo" aria-hidden="true">
+          <!-- 사진 파일 추가 시 onerror 안 걸리고 표시. 없으면 ::after 의 이니셜로 fallback. -->
+          <img src="ceo-kim.jpg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="dp-ceo-meta">
+          <p class="dp-ceo-name"><strong>김병준</strong> · 내일플러스 대표</p>
+          <p class="dp-ceo-cred">정책자금·정부지원사업 컨설팅 · 립스/팁스 운영사 네트워크 · MSO 컨설팅</p>
+        </div>
+      </div>
+
       <h2 class="dp-h2">
         "무료라고 해서<br/>
         가벼운 진단이 아닙니다."
@@ -514,7 +560,7 @@ fbq('track', 'PageView');
       </p>
       <p class="dp-ceo-body">
         정책자금·팁스 운영사 네트워크와<br/>
-        <strong>15명의 시니어 컨설턴트, 알리바바코리아 파트너십</strong>까지 모인 이유는,<br/>
+        <strong>15명의 분야별 전문가, 알리바바코리아 파트너십</strong>까지 모인 이유는,<br/>
         <strong>대표님 한 분이 창업부터 가업승계까지 모든 영역을 혼자 알기 어렵기</strong> 때문입니다.
       </p>
       <p class="dp-ceo-body">
@@ -526,7 +572,10 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- ============== 14. TESTIMONIALS (placeholders) ============== -->
+  <!-- ============== 14. TESTIMONIALS ==============
+       수정 (2026-05-05, 진단): placeholder 후기 + "교체 예정" 안내가 광고 페이지에 노출되면 신뢰 즉시 추락.
+       실제 후기 확보 전까지 섹션 전체 숨김. 운영 후 실제 후기 1개 이상 확보되면 주석 해제.
+       정책: 가짜 후기로 오해될 수 있는 placeholder 는 절대 광고 트래픽에 노출 금지.
   <section class="dp-section dp-review">
     <div class="container">
       <span class="dp-label">REVIEWS</span>
@@ -552,6 +601,7 @@ fbq('track', 'PageView');
       </ul>
     </div>
   </section>
+  -->
 
   <!-- ============== 15. FAQ ============== -->
   <section class="dp-section dp-faq">
@@ -629,7 +679,12 @@ fbq('track', 'PageView');
         <div class="row">
           <div class="field">
             <label for="lf-phone">연락처 <em>*</em></label>
-            <input id="lf-phone" name="연락처" type="tel" required autocomplete="tel" inputmode="tel" placeholder="010-0000-0000" />
+            <!-- 수정 (2026-05-05, 진단): 휴대폰 번호 패턴 검증 추가. 010/011/016/017/018/019 + 8자리 허용 (하이픈 무관).
+                 잘못된 번호 → 헛 진단 일정 → 운영비 손실. landing.js 에서도 정규화 처리. -->
+            <input id="lf-phone" name="연락처" type="tel" required autocomplete="tel" inputmode="tel"
+                   placeholder="010-0000-0000"
+                   pattern="^01[016-9][- ]?\d{3,4}[- ]?\d{4}$"
+                   title="휴대폰 번호 형식으로 입력해주세요 (예: 010-1234-5678)" />
           </div>
           <div class="field">
             <label for="lf-company">회사명 <em>*</em></label>
@@ -677,9 +732,18 @@ fbq('track', 'PageView');
           <textarea id="lf-msg" name="상황" rows="3" placeholder="현재 단계, 매출 규모, 가장 시급한 과제 등을 한두 줄로 적어주세요."></textarea>
         </div>
 
+        <!-- 수정 (2026-05-05, 진단): 개인정보보호법 제15조 준수 — 수집 항목·목적·기간·거부권을 명시적으로 분리.
+             기존 한 줄 동의는 법적 형식 미충족(과태료 및 페북 정책 위반 리스크). 동의 문구 안에 4가지 정보 모두 노출. -->
         <label class="agree">
           <input type="checkbox" required />
-          <span>개인정보 수집·이용에 동의합니다. (상담 목적, 보관 1년) <a href="privacy.html" target="_blank" rel="noopener">자세히</a></span>
+          <span class="agree-body">
+            <strong>개인정보 수집·이용에 동의합니다. (필수)</strong><br/>
+            <em>· 수집 항목:</em> 이름, 연락처, 회사명, 관심영역, 상황(선택)<br/>
+            <em>· 수집 목적:</em> 무료 진단 상담 제공 및 결과 회신<br/>
+            <em>· 보유 기간:</em> 수집일로부터 1년 (또는 정보주체 요청 시 즉시 파기)<br/>
+            <em>· 거부권 안내:</em> 동의를 거부할 권리가 있으며, 거부 시 진단 신청이 제한됩니다.<br/>
+            <a href="privacy.html" target="_blank" rel="noopener">전체 개인정보처리방침 보기 →</a>
+          </span>
         </label>
 
         <button class="btn btn-gold btn-xl btn-block" type="submit">
@@ -698,22 +762,51 @@ fbq('track', 'PageView');
   <span aria-hidden="true">→</span>
 </a>
 
+<!-- 수정 (2026-05-05, 진단): 정보통신망법·전자상거래법상 사업자 정보 노출 의무 이행을 위해 footer 확장.
+     기존 1줄(© + 이메일) → 사업자 정보 블록 + 법적 링크 분리.
+     ⚠️ TODO: 아래 [추후 입력] 항목들을 실제 등기 정보로 교체. 광고 운영 시작 전 필수.
+        - 상호 (법인명)
+        - 사업자등록번호 (10자리)
+        - 통신판매업 신고번호
+        - 본사 소재지
+        - 고객센터 연락처
+     placeholder 상태로 광고 송출 시 허위 표시 위험 → 반드시 교체. -->
 <footer class="dp-footer">
   <div class="container dp-footer-inner">
-    <small>© <span id="year">2026</span> 내일플러스 · 대표 김병준 · <a href="mailto:ceo@biznaeil.com">ceo@biznaeil.com</a></small>
+    <div class="dp-footer-corp">
+      <p class="dp-footer-name">
+        <strong>내일플러스</strong>
+        <span class="sep" aria-hidden="true">|</span>
+        <span>대표 김병준</span>
+      </p>
+      <p class="dp-footer-meta">
+        <span><em>상호</em> [추후 입력 — 예: 주식회사 내일플러스]</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span><em>사업자등록번호</em> [추후 입력 — 000-00-00000]</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span><em>통신판매업 신고</em> [추후 입력 — 제0000-서울강남-0000호]</span>
+      </p>
+      <p class="dp-footer-meta">
+        <span><em>주소</em> [추후 입력 — 본사 소재지]</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span><em>고객센터</em> [추후 입력 — 02-0000-0000]</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span><em>이메일</em> <a href="mailto:ceo@biznaeil.com">ceo@biznaeil.com</a></span>
+      </p>
+      <small class="dp-footer-copy">© <span id="year">2026</span> 내일플러스. All rights reserved.</small>
+    </div>
     <nav class="legal-links" aria-label="법적 고지">
       <a href="privacy.html">개인정보처리방침</a>
       <span aria-hidden="true">·</span>
       <a href="terms.html">이용약관</a>
-      <span aria-hidden="true">·</span>
-      <a href="index.html">홈</a>
     </nav>
   </div>
 </footer>
 
-<script src="script.js" defer></script>
-<!-- 수정 (2026-05-01, 상담접수 통합): landing.js 가 Firebase ESM SDK 사용 → type="module" 필수.
-     module 스크립트는 자동 defer 라 defer 속성 불필요. -->
+<!-- 수정 (2026-05-05, 진단): script.js 참조 제거 — 본 LP 저장소엔 해당 파일 없음(404 발생).
+     기존엔 homepage 저장소의 script.js 를 가리켰으나 2026-05-01 분리 이후 무효 참조였음.
+     LP 동작에 필요한 모든 JS 는 landing.js 에 통합되어 있음. -->
+<!-- landing.js 는 Firebase ESM SDK 사용 → type="module" 필수. module 스크립트는 자동 defer 라 defer 속성 불필요. -->
 <script src="landing.js" type="module"></script>
 </body>
 </html>

@@ -459,8 +459,13 @@ section{ scroll-margin-top: 88px; }
   outline:none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(10,37,64,.12);
 }
 .field textarea{ resize: vertical; min-height: 96px; }
-.agree{ display:flex; align-items:flex-start; gap: 8px; font-size: 13px; color: var(--muted); }
-.agree input{ margin-top: 3px; }
+.agree{ display:flex; align-items:flex-start; gap: 10px; font-size: 13px; color: var(--muted); }
+.agree input{ margin-top: 4px; flex-shrink: 0; }
+/* 추가 (2026-05-05, 진단): 개인정보 동의 항목별 분리 표기 — 라벨/값 위계와 가독성 보강. */
+.agree .agree-body{ line-height: 1.7; }
+.agree .agree-body strong{ color: var(--ink); display:inline-block; margin-bottom: 4px; }
+.agree .agree-body em{ font-style: normal; color: var(--ink); font-weight: 600; opacity: .85; }
+.agree .agree-body a{ display:inline-block; margin-top: 6px; color: var(--navy); font-weight: 700; text-decoration: underline; }
 .form-note{ margin: 4px 0 0; font-size: 12.5px; color: var(--muted); text-align:center; }
 
 /* ---------- Footer ---------- */
@@ -789,6 +794,10 @@ section{ scroll-margin-top: 88px; }
   background: linear-gradient(180deg, transparent 60%, #FFD66B 60%);
   padding: 0 4px; font-weight: 800; color: var(--navy);
 }
+/* 추가 (2026-05-05, 진단): 수치 출처 미주 — 옅은 회색·작은 폰트로 본문 위계 깨지 않게 처리. */
+.dp-shock-source{
+  margin: 24px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.6; opacity: .8;
+}
 
 /* =========================================================
    04. SOLUTION
@@ -1102,6 +1111,36 @@ section{ scroll-margin-top: 88px; }
   text-align: center;
 }
 .dp-ceo .dp-h2{ margin: 0 0 32px; }
+/* 추가 (2026-05-05, 진단): CEO 사진 + 이름 + 이력 1줄 카드. 이미지 없으면 ::after 이니셜로 fallback. */
+.dp-ceo-card{
+  display:flex; flex-direction: column; align-items: center; gap: 14px;
+  margin: 0 0 36px;
+}
+.dp-ceo-photo{
+  position: relative;
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, #0A2540 0%, #1B3358 100%);
+  box-shadow: 0 8px 24px rgba(10,37,64,.18);
+  overflow: hidden; flex-shrink: 0;
+}
+.dp-ceo-photo img{
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.dp-ceo-photo::after{
+  content: "김"; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-weight: 800; font-size: 36px;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+}
+.dp-ceo-photo img{ z-index: 1; }
+.dp-ceo-meta{ text-align: center; }
+.dp-ceo-name{ margin: 0; font-size: 16px; color: var(--navy); }
+.dp-ceo-name strong{ font-weight: 800; }
+.dp-ceo-cred{
+  margin: 6px 0 0; font-size: 13px; color: var(--muted); line-height: 1.6;
+  max-width: 480px;
+}
 .dp-ceo-body{
   font-size: clamp(16px, 1.5vw, 19px);
   color: var(--text); line-height: 1.9;
@@ -1202,16 +1241,28 @@ section{ scroll-margin-top: 88px; }
    ========================================================= */
 .dp-footer{
   background: var(--ink); color:#94A3B8;
-  padding: 28px 0 96px;  /* space for sticky CTA on mobile */
+  padding: 40px 0 96px;  /* space for sticky CTA on mobile */
 }
 .dp-footer-inner{
-  display:flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 12px;
+  display:flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 20px;
 }
 .dp-footer small{ font-size: 13px; }
 .dp-footer a{ color: #B4C0D0; }
 .dp-footer a:hover{ color: var(--gold); }
 .dp-footer .legal-links{ font-size: 13px; }
+/* 추가 (2026-05-05, 진단): 사업자 정보 footer 블록 — 항목 라벨/값 위계, 모바일 줄바꿈 자연스럽게. */
+.dp-footer-corp{ flex: 1 1 auto; min-width: 0; }
+.dp-footer-name{ margin: 0 0 12px; font-size: 14px; color: #E2E8F0; display:flex; flex-wrap:wrap; gap: 8px; align-items:center; }
+.dp-footer-name strong{ color:#fff; font-weight: 800; }
+.dp-footer-name .sep{ color: #475569; }
+.dp-footer-meta{
+  margin: 0 0 6px; font-size: 12.5px; line-height: 1.8;
+  display:flex; flex-wrap: wrap; gap: 0 10px; color:#94A3B8;
+}
+.dp-footer-meta em{ font-style: normal; color:#64748B; font-weight: 600; margin-right: 4px; }
+.dp-footer-meta .sep{ color:#475569; }
+.dp-footer-copy{ display:block; margin-top: 12px; font-size: 12px; color:#64748B; }
 
 /* =========================================================
    RESPONSIVE

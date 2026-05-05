@@ -109,6 +109,14 @@ document.querySelectorAll("form[data-lead-form]").forEach((form) => {
       return;
     }
 
+    // 추가 (2026-05-05, 진단): 휴대폰 번호 형식 검증 — 잘못된 번호 = 헛 진단 일정 = 운영비 손실.
+    // 패턴: 010/011/016/017/018/019 + 3~4자리 + 4자리 (하이픈/공백 무관). pattern 속성과 동일 규칙.
+    const phoneNormalized = payload.phone.replace(/[\s-]/g, "");
+    if (!/^01[016-9]\d{7,8}$/.test(phoneNormalized)) {
+      alert("연락처를 휴대폰 번호 형식으로 입력해 주세요.\n예: 010-1234-5678");
+      return;
+    }
+
     // 제출 버튼 비활성 + 로딩 표시
     let originalText = "";
     if (submitBtn) {
