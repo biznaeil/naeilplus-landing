@@ -733,18 +733,21 @@
         </div>
 
         <!-- 수정 (2026-05-05, 진단): 개인정보보호법 제15조 준수 — 수집 항목·목적·기간·거부권을 명시적으로 분리.
-             기존 한 줄 동의는 법적 형식 미충족(과태료 및 페북 정책 위반 리스크). 동의 문구 안에 4가지 정보 모두 노출. -->
-        <label class="agree">
-          <input type="checkbox" required />
-          <span class="agree-body">
-            <strong>개인정보 수집·이용에 동의합니다. (필수)</strong><br/>
-            <em>· 수집 항목:</em> 이름, 연락처, 회사명, 관심영역, 상황(선택)<br/>
-            <em>· 수집 목적:</em> 무료 진단 상담 제공 및 결과 회신<br/>
-            <em>· 보유 기간:</em> 수집일로부터 1년 (또는 정보주체 요청 시 즉시 파기)<br/>
-            <em>· 거부권 안내:</em> 동의를 거부할 권리가 있으며, 거부 시 진단 신청이 제한됩니다.<br/>
+             기존 한 줄 동의는 법적 형식 미충족(과태료 및 페북 정책 위반 리스크). 동의 문구 안에 4가지 정보 모두 노출.
+             수정 (2026-05-05, 진단 v2): label 안에 input+span 중첩 시 flex item 너비 계산 깨져서 텍스트가
+             세로 한 글자씩 깨지는 버그 수정. 구조를 div(flex container) + input + label[for] 로 분리.
+             label[for] 가 body 역할을 하면서 클릭 시 체크박스 토글도 정상 작동. -->
+        <div class="agree">
+          <input type="checkbox" id="agree-privacy" required />
+          <label for="agree-privacy" class="agree-body">
+            <strong>개인정보 수집·이용에 동의합니다. (필수)</strong>
+            <span class="agree-row"><em>· 수집 항목:</em> 이름, 연락처, 회사명, 관심영역, 상황(선택)</span>
+            <span class="agree-row"><em>· 수집 목적:</em> 무료 진단 상담 제공 및 결과 회신</span>
+            <span class="agree-row"><em>· 보유 기간:</em> 수집일로부터 1년 (또는 정보주체 요청 시 즉시 파기)</span>
+            <span class="agree-row"><em>· 거부권 안내:</em> 동의를 거부할 권리가 있으며, 거부 시 진단 신청이 제한됩니다.</span>
             <a href="privacy.html" target="_blank" rel="noopener">전체 개인정보처리방침 보기 →</a>
-          </span>
-        </label>
+          </label>
+        </div>
 
         <button class="btn btn-gold btn-xl btn-block" type="submit">
           지금 무료로 진단받기 →

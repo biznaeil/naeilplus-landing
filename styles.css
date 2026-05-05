@@ -459,13 +459,37 @@ section{ scroll-margin-top: 88px; }
   outline:none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(10,37,64,.12);
 }
 .field textarea{ resize: vertical; min-height: 96px; }
-.agree{ display:flex; align-items:flex-start; gap: 10px; font-size: 13px; color: var(--muted); }
-.agree input{ margin-top: 4px; flex-shrink: 0; }
-/* 추가 (2026-05-05, 진단): 개인정보 동의 항목별 분리 표기 — 라벨/값 위계와 가독성 보강. */
-.agree .agree-body{ line-height: 1.7; }
-.agree .agree-body strong{ color: var(--ink); display:inline-block; margin-bottom: 4px; }
-.agree .agree-body em{ font-style: normal; color: var(--ink); font-weight: 600; opacity: .85; }
-.agree .agree-body a{ display:inline-block; margin-top: 6px; color: var(--navy); font-weight: 700; text-decoration: underline; }
+/* 수정 (2026-05-05, 진단 v2): label 중첩 → div+input+label 분리 구조.
+   .agree 가 flex container, .agree-body 는 flex:1 로 나머지 너비 모두 차지(min-width:0 으로 축소 허용).
+   각 항목은 block span 으로 줄바꿈 — br 제거로 layout 안정성 확보. */
+.agree{
+  display:flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--muted);
+  width: 100%;
+}
+.agree > input[type="checkbox"]{
+  margin: 4px 0 0; flex: 0 0 auto;
+}
+.agree .agree-body{
+  flex: 1 1 auto; min-width: 0;
+  display: block; line-height: 1.7;
+  cursor: pointer;
+}
+.agree .agree-body strong{
+  display: block; margin-bottom: 6px;
+  color: var(--ink); font-weight: 700;
+}
+.agree .agree-body .agree-row{
+  display: block; margin: 2px 0;
+}
+.agree .agree-body em{
+  font-style: normal; color: var(--ink); font-weight: 600; opacity: .85;
+  margin-right: 2px;
+}
+.agree .agree-body a{
+  display: inline-block; margin-top: 8px;
+  color: var(--navy); font-weight: 700; text-decoration: underline;
+}
 .form-note{ margin: 4px 0 0; font-size: 12.5px; color: var(--muted); text-align:center; }
 
 /* ---------- Footer ---------- */
